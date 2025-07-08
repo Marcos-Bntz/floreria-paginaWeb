@@ -14,7 +14,7 @@ const testimonials: Testimonial[] = [
   {
     id: 1,
     name: 'María Fernández',
-    avatar: 'https://images.pexels.com/photos/1102341/pexels-photo-1102341.jpeg?auto=compress&cs=tinysrgb&w=150',
+    avatar: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=150',
     rating: 5,
     text: 'El arreglo floral que pedí para el cumpleaños de mi madre fue simplemente espectacular. Superó todas mis expectativas y el servicio de entrega fue puntual. Definitivamente volveré a comprar aquí.',
     date: '12/04/2024'
@@ -22,7 +22,7 @@ const testimonials: Testimonial[] = [
   {
     id: 2,
     name: 'Carlos Mendoza',
-    avatar: 'https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=150',
+    avatar: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=150',
     rating: 5,
     text: 'Mi esposa quedó encantada con el ramo de aniversario. La calidad de las flores es excepcional y duraron muchísimo tiempo. El proceso de compra fue muy sencillo y la entrega fue perfecta.',
     date: '28/03/2024'
@@ -30,7 +30,7 @@ const testimonials: Testimonial[] = [
   {
     id: 3,
     name: 'Laura Torres',
-    avatar: 'https://images.pexels.com/photos/1310474/pexels-photo-1310474.jpeg?auto=compress&cs=tinysrgb&w=150',
+    avatar: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=150',
     rating: 4,
     text: 'Compré un centro de mesa para una cena especial y todos mis invitados quedaron impresionados. El diseño era único y las flores estaban frescas. Lo único que podría mejorar es más opciones de entrega.',
     date: '15/03/2024'
@@ -38,7 +38,7 @@ const testimonials: Testimonial[] = [
   {
     id: 4,
     name: 'Javier Ruiz',
-    avatar: 'https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg?auto=compress&cs=tinysrgb&w=150',
+    avatar: 'https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=150',
     rating: 5,
     text: 'La corona que encargué para el funeral de un ser querido fue hermosa y digna. El equipo fue muy atento y comprensivo en un momento difícil. Agradezco su profesionalismo y cuidado.',
     date: '02/03/2024'

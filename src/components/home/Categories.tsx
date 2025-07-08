@@ -14,28 +14,28 @@ const categories: Category[] = [
   {
     id: 'ramos',
     name: 'Ramos',
-    image: 'https://images.pexels.com/photos/2879824/pexels-photo-2879824.jpeg',
+    image: 'https://images.pexels.com/photos/1179229/pexels-photo-1179229.jpeg?auto=compress&cs=tinysrgb&w=800',
     description: 'Ramos elegantes para toda ocasión',
     count: 24
   },
   {
     id: 'arreglos',
     name: 'Arreglos',
-    image: 'https://images.pexels.com/photos/6698378/pexels-photo-6698378.jpeg',
+    image: 'https://images.pexels.com/photos/1179229/pexels-photo-1179229.jpeg?auto=compress&cs=tinysrgb&w=800',
     description: 'Composiciones florales únicas',
     count: 18
   },
   {
     id: 'plantas',
     name: 'Plantas',
-    image: 'https://images.pexels.com/photos/776656/pexels-photo-776656.jpeg',
+    image: 'https://images.pexels.com/photos/1179229/pexels-photo-1179229.jpeg?auto=compress&cs=tinysrgb&w=800',
     description: 'Plantas ornamentales y de interior',
     count: 15
   },
   {
     id: 'ocasiones',
     name: 'Ocasiones especiales',
-    image: 'https://images.pexels.com/photos/931154/pexels-photo-931154.jpeg',
+    image: 'https://images.pexels.com/photos/1179229/pexels-photo-1179229.jpeg?auto=compress&cs=tinysrgb&w=800',
     description: 'Arreglos para bodas y eventos',
     count: 22
   }
