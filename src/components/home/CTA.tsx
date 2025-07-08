@@ -67,14 +67,14 @@ export const CTA: React.FC = () => {
           <div className="relative">
             <div className="aspect-square rounded-lg overflow-hidden">
               <img 
-                src="https://images.pexels.com/photos/5702385/pexels-photo-5702385.jpeg?auto=compress&cs=tinysrgb&w=800" 
+                src="https://images.pexels.com/photos/5702385/pexels-photo-5702385.jpeg" 
                 alt="Diseñadora floral trabajando" 
                 className="w-full h-full object-cover"
               />
             </div>
             <div className="absolute -bottom-6 -left-6 w-48 h-48 bg-white p-4 rounded-lg shadow-lg hidden md:block">
               <img 
-                src="https://images.pexels.com/photos/1070850/pexels-photo-1070850.jpeg?auto=compress&cs=tinysrgb&w=400" 
+                src="https://images.pexels.com/photos/4505168/pexels-photo-4505168.jpeg" 
                 alt="Arreglo floral personalizado" 
                 className="w-full h-full object-cover rounded"
               />

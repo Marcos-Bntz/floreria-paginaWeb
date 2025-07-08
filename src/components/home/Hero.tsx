@@ -8,7 +8,7 @@ export const Hero: React.FC = () => {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img
-          src="https://images.pexels.com/photos/2111192/pexels-photo-2111192.jpeg?auto=compress&cs=tinysrgb&w=1600"
+          src="https://images.pexels.com/photos/2111192/pexels-photo-2111192.jpeg"
           alt="Flores hermosas"
           className="w-full h-full object-cover"
         />
