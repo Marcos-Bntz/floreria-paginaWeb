@@ -20,7 +20,7 @@ export const products: Product[] = [
     name: 'Arreglo Primaveral',
     description: 'Arreglo con flores de temporada en tonos pastel. Incluye gerberas, tulipanes y lirios. Ideal para alegrar cualquier espacio.',
     price: 850,
-    imageUrl: 'https://images.pexels.com/photos/1179229/pexels-photo-1179229.jpeg?auto=compress&cs=tinysrgb&w=800',
+    imageUrl: 'https://images.pexels.com/photos/1070850/pexels-photo-1070850.jpeg?auto=compress&cs=tinysrgb&w=800',
     category: 'arreglos',
     style: 'moderno',
     occasion: 'cumpleaños',
