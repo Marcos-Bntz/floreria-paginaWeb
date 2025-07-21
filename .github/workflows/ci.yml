@@ -22,8 +22,17 @@ jobs:
       - name: Instalar dependencias
         run: npm install
 
+      - name: Chequeo de seguridad (npm audit)
+        run: npm audit --audit-level=moderate || true
+
+      - name: Chequeo de formato (Prettier)
+        run: npx prettier --check .
+
       - name: Lint
         run: npm run lint
+
+      # - name: Test unitarios (activar si tienes tests)
+      #   run: npm test
 
       - name: Build
         run: npm run build
