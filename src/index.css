@@ -12,12 +12,12 @@
     --color-success: 132 204 22; /* #84CC16 */
     --color-warning: 250 204 21; /* #FACC15 */
     --color-error: 239 68 68; /* #EF4444 */
-    
+
     /* Nueva paleta de colores para modo claro */
     --color-text-primary: 55 65 81; /* #374151 - Gris oscuro (quinto color adaptado) */
     --color-text-secondary: 156 163 175; /* #9CA3AF - Gris medio */
     --color-text-inverse: 255 255 255; /* #FFFFFF */
-    
+
     /* Fondos usando la nueva paleta */
     --color-bg-primary: 255 251 254; /* #FFFBFE - Rosa muy claro (primer color) */
     --color-bg-secondary: 250 247 245; /* #FAF7F5 - Beige claro (segundo color) */
@@ -34,12 +34,12 @@
     --color-success: 132 204 22; /* #84CC16 */
     --color-warning: 250 204 21; /* #FACC15 */
     --color-error: 239 68 68; /* #EF4444 */
-    
+
     /* Nueva paleta de verdes para modo oscuro */
     --color-text-primary: 240 253 244; /* #F0FDF4 - Verde muy claro para texto */
     --color-text-secondary: 187 247 208; /* #BBF7D0 - Verde claro para texto secundario */
     --color-text-inverse: 15 23 42; /* #0F172A - Azul muy oscuro */
-    
+
     /* Fondos usando la paleta de verdes */
     --color-bg-primary: 15 23 42; /* #0F172A - Verde muy oscuro (tercer color) */
     --color-bg-secondary: 20 83 45; /* #14532D - Verde oscuro (segundo color) */
@@ -50,23 +50,28 @@
   html {
     @apply scroll-smooth;
   }
-  
+
   body {
     @apply font-body bg-bg-primary text-text-primary transition-colors duration-200;
   }
-  
-  h1, h2, h3, h4, h5, h6 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-heading font-medium;
   }
-  
+
   h1 {
     @apply text-4xl md:text-5xl lg:text-6xl;
   }
-  
+
   h2 {
     @apply text-3xl md:text-4xl;
   }
-  
+
   h3 {
     @apply text-2xl md:text-3xl;
   }
@@ -75,10 +80,12 @@
     @apply transition-colors duration-200;
   }
 
-  input, select, textarea {
+  input,
+  select,
+  textarea {
     @apply rounded-md border-gray-300 dark:border-gray-600 focus:border-primary focus:ring focus:ring-primary focus:ring-opacity-50 bg-bg-primary text-text-primary;
   }
-  
+
   button {
     @apply transition-all duration-200;
   }
@@ -88,19 +95,19 @@
   .btn {
     @apply px-6 py-3 rounded-md font-medium transition-all duration-200;
   }
-  
+
   .btn-primary {
     @apply bg-primary text-white hover:bg-primary/90 focus:ring-2 focus:ring-primary/50;
   }
-  
+
   .btn-secondary {
     @apply bg-secondary text-text-primary hover:bg-secondary/90 focus:ring-2 focus:ring-secondary/50;
   }
-  
+
   .btn-outline {
     @apply border-2 border-current hover:bg-current hover:text-text-inverse focus:ring-2 focus:ring-current/50;
   }
-  
+
   .container-custom {
     @apply container mx-auto px-4 sm:px-6 lg:px-8;
   }

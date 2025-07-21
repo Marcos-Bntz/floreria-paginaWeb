@@ -1,16 +1,10 @@
-import React, { useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { 
-  CreditCard, 
-  Truck, 
-  CheckCircle, 
-  Lock, 
-  ArrowLeft
-} from 'lucide-react';
-import { Layout } from '../components/layout/Layout';
-import { Button } from '../components/ui/Button';
-import { useCartStore } from '../store/cartStore';
-import { Product } from '../types';
+import React, { useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { CreditCard, Truck, CheckCircle, Lock, ArrowLeft } from "lucide-react";
+import { Layout } from "../components/layout/Layout";
+import { Button } from "../components/ui/Button";
+import { useCartStore } from "../store/cartStore";
+import { Product } from "../types";
 
 interface CheckoutItem {
   product: Product;
@@ -21,53 +15,58 @@ export const CheckoutPage: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { clearCart } = useCartStore();
-  
+
   // Obtener datos del estado de navegación (compra directa)
   const directPurchase = location.state?.directPurchase as CheckoutItem | null;
-  
+
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    address: '',
-    city: '',
-    postalCode: '',
-    paymentMethod: 'card'
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    address: "",
+    city: "",
+    postalCode: "",
+    paymentMethod: "card",
   });
-  
+
   const [isProcessing, setIsProcessing] = useState(false);
   const [orderSuccess, setOrderSuccess] = useState(false);
-  
+
   // Calcular totales
   const items = directPurchase ? [directPurchase] : [];
-  const subtotal = items.reduce((total, item) => total + (item.product.price * item.quantity), 0);
+  const subtotal = items.reduce(
+    (total, item) => total + item.product.price * item.quantity,
+    0,
+  );
   const shipping = subtotal > 1500 ? 0 : 150;
   const total = subtotal + shipping;
-  
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+  ) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
-  
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsProcessing(true);
-    
+
     // Simular procesamiento de pago
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+
     // Limpiar carrito si no es compra directa
     if (!directPurchase) {
       clearCart();
     }
-    
+
     setOrderSuccess(true);
     setIsProcessing(false);
   };
-  
+
   if (orderSuccess) {
     return (
       <Layout>
@@ -78,19 +77,20 @@ export const CheckoutPage: React.FC = () => {
               ¡Orden confirmada!
             </h1>
             <p className="text-text-secondary mb-8">
-              Tu pedido ha sido procesado exitosamente. Recibirás un email de confirmación con los detalles de tu compra.
+              Tu pedido ha sido procesado exitosamente. Recibirás un email de
+              confirmación con los detalles de tu compra.
             </p>
             <div className="space-y-3">
-              <Button 
-                variant="primary" 
-                onClick={() => navigate('/')}
+              <Button
+                variant="primary"
+                onClick={() => navigate("/")}
                 className="w-full"
               >
                 Volver al inicio
               </Button>
-              <Button 
-                variant="outline" 
-                onClick={() => navigate('/catalogo')}
+              <Button
+                variant="outline"
+                onClick={() => navigate("/catalogo")}
                 className="w-full"
               >
                 Seguir comprando
@@ -101,13 +101,13 @@ export const CheckoutPage: React.FC = () => {
       </Layout>
     );
   }
-  
+
   return (
     <Layout>
       <div className="container-custom py-8">
         {/* Header */}
         <div className="mb-8">
-          <button 
+          <button
             onClick={() => navigate(-1)}
             className="flex items-center text-text-secondary hover:text-primary mb-4"
           >
@@ -118,7 +118,7 @@ export const CheckoutPage: React.FC = () => {
             Finalizar compra
           </h1>
         </div>
-        
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Formulario */}
           <div>
@@ -183,7 +183,7 @@ export const CheckoutPage: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               {/* Dirección de envío */}
               <div className="bg-bg-primary dark:bg-bg-secondary p-6 rounded-lg border border-gray-200 dark:border-gray-700">
                 <h2 className="font-heading text-xl font-semibold text-text-primary mb-4">
@@ -234,7 +234,7 @@ export const CheckoutPage: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               {/* Método de pago */}
               <div className="bg-bg-primary dark:bg-bg-secondary p-6 rounded-lg border border-gray-200 dark:border-gray-700">
                 <h2 className="font-heading text-xl font-semibold text-text-primary mb-4">
@@ -246,28 +246,35 @@ export const CheckoutPage: React.FC = () => {
                       type="radio"
                       name="paymentMethod"
                       value="card"
-                      checked={formData.paymentMethod === 'card'}
+                      checked={formData.paymentMethod === "card"}
                       onChange={handleInputChange}
                       className="mr-3"
                     />
-                    <CreditCard size={20} className="mr-3 text-text-secondary" />
-                    <span className="font-medium text-text-primary">Tarjeta de crédito/débito</span>
+                    <CreditCard
+                      size={20}
+                      className="mr-3 text-text-secondary"
+                    />
+                    <span className="font-medium text-text-primary">
+                      Tarjeta de crédito/débito
+                    </span>
                   </label>
                   <label className="flex items-center p-3 border border-gray-200 dark:border-gray-700 rounded-md cursor-pointer hover:bg-accent dark:hover:bg-accent/20">
                     <input
                       type="radio"
                       name="paymentMethod"
                       value="cash"
-                      checked={formData.paymentMethod === 'cash'}
+                      checked={formData.paymentMethod === "cash"}
                       onChange={handleInputChange}
                       className="mr-3"
                     />
                     <Truck size={20} className="mr-3 text-text-secondary" />
-                    <span className="font-medium text-text-primary">Pago contra entrega</span>
+                    <span className="font-medium text-text-primary">
+                      Pago contra entrega
+                    </span>
                   </label>
                 </div>
               </div>
-              
+
               {/* Botón de pago */}
               <Button
                 type="submit"
@@ -277,70 +284,91 @@ export const CheckoutPage: React.FC = () => {
                 disabled={isProcessing}
                 icon={isProcessing ? undefined : <Lock size={18} />}
               >
-                {isProcessing ? 'Procesando pago...' : 'Pagar ahora'}
+                {isProcessing ? "Procesando pago..." : "Pagar ahora"}
               </Button>
             </form>
           </div>
-          
+
           {/* Resumen del pedido */}
           <div className="lg:pl-8">
             <div className="bg-bg-primary dark:bg-bg-secondary p-6 rounded-lg border border-gray-200 dark:border-gray-700 sticky top-8">
               <h2 className="font-heading text-xl font-semibold text-text-primary mb-6">
                 Resumen del pedido
               </h2>
-              
+
               {/* Productos */}
               <div className="space-y-4 mb-6">
                 {items.map((item, index) => (
                   <div key={index} className="flex items-center">
-                    <img 
-                      src={item.product.imageUrl} 
+                    <img
+                      src={item.product.imageUrl}
                       alt={item.product.name}
                       className="w-16 h-16 object-cover rounded-md mr-4"
                     />
                     <div className="flex-1">
-                      <h3 className="font-medium text-text-primary">{item.product.name}</h3>
-                      <p className="text-sm text-text-secondary">Cantidad: {item.quantity}</p>
+                      <h3 className="font-medium text-text-primary">
+                        {item.product.name}
+                      </h3>
+                      <p className="text-sm text-text-secondary">
+                        Cantidad: {item.quantity}
+                      </p>
                     </div>
                     <span className="font-semibold text-text-primary">
-                      ${(item.product.price * item.quantity).toLocaleString('es-MX')}
+                      $
+                      {(item.product.price * item.quantity).toLocaleString(
+                        "es-MX",
+                      )}
                     </span>
                   </div>
                 ))}
               </div>
-              
+
               {/* Totales */}
               <div className="border-t border-gray-200 dark:border-gray-700 pt-4 space-y-2">
                 <div className="flex justify-between">
                   <span className="text-text-secondary">Subtotal</span>
-                  <span className="font-medium text-text-primary">${subtotal.toLocaleString('es-MX')}</span>
+                  <span className="font-medium text-text-primary">
+                    ${subtotal.toLocaleString("es-MX")}
+                  </span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-text-secondary">Envío</span>
                   <span className="font-medium text-text-primary">
-                    {shipping === 0 ? 'Gratis' : `$${shipping.toLocaleString('es-MX')}`}
+                    {shipping === 0
+                      ? "Gratis"
+                      : `$${shipping.toLocaleString("es-MX")}`}
                   </span>
                 </div>
                 <div className="flex justify-between text-lg font-semibold border-t border-gray-200 dark:border-gray-700 pt-2">
                   <span className="text-text-primary">Total</span>
-                  <span className="text-text-primary">${total.toLocaleString('es-MX')}</span>
+                  <span className="text-text-primary">
+                    ${total.toLocaleString("es-MX")}
+                  </span>
                 </div>
               </div>
-              
+
               {/* Información adicional */}
               <div className="mt-6 p-4 bg-accent dark:bg-accent/20 rounded-lg">
                 <div className="flex items-start mb-3">
                   <Truck size={20} className="text-primary mr-3 mt-0.5" />
                   <div>
-                    <h4 className="font-medium text-text-primary">Envío seguro</h4>
-                    <p className="text-sm text-text-secondary">Entrega en 24-48 horas</p>
+                    <h4 className="font-medium text-text-primary">
+                      Envío seguro
+                    </h4>
+                    <p className="text-sm text-text-secondary">
+                      Entrega en 24-48 horas
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-start">
                   <CheckCircle size={20} className="text-primary mr-3 mt-0.5" />
                   <div>
-                    <h4 className="font-medium text-text-primary">Garantía de frescura</h4>
-                    <p className="text-sm text-text-secondary">Flores frescas garantizadas</p>
+                    <h4 className="font-medium text-text-primary">
+                      Garantía de frescura
+                    </h4>
+                    <p className="text-sm text-text-secondary">
+                      Flores frescas garantizadas
+                    </p>
                   </div>
                 </div>
               </div>
@@ -350,4 +378,4 @@ export const CheckoutPage: React.FC = () => {
       </div>
     </Layout>
   );
-}; 
+};

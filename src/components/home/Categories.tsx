@@ -1,6 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowRight, Leaf } from 'lucide-react';
+import React from "react";
+import { Link } from "react-router-dom";
+import { ArrowRight, Leaf } from "lucide-react";
 
 interface Category {
   id: string;
@@ -12,26 +12,27 @@ interface Category {
 
 const categories: Category[] = [
   {
-    id: 'flores',
-    name: 'Flores',
-    image: 'https://images.pexels.com/photos/2253870/pexels-photo-2253870.jpeg?auto=compress&cs=tinysrgb&w=800',
-    description: 'Hermosos ramos y arreglos',
-    count: 24
+    id: "flores",
+    name: "Flores",
+    image:
+      "https://images.pexels.com/photos/2253870/pexels-photo-2253870.jpeg?auto=compress&cs=tinysrgb&w=800",
+    description: "Hermosos ramos y arreglos",
+    count: 24,
   },
   {
-    id: 'plantas',
-    name: 'Plantas & Árboles',
-    image: 'https://images.pexels.com/photos/6551854/pexels-photo-6551854.jpeg',
-    description: 'Plantas de interior y exterior',
-    count: 18
+    id: "plantas",
+    name: "Plantas & Árboles",
+    image: "https://images.pexels.com/photos/6551854/pexels-photo-6551854.jpeg",
+    description: "Plantas de interior y exterior",
+    count: 18,
   },
   {
-    id: 'regalos',
-    name: 'Regalos',
-    image: 'https://images.pexels.com/photos/5745371/pexels-photo-5745371.jpeg',
-    description: 'Colecciones de regalos curados',
-    count: 12
-  }
+    id: "regalos",
+    name: "Regalos",
+    image: "https://images.pexels.com/photos/5745371/pexels-photo-5745371.jpeg",
+    description: "Colecciones de regalos curados",
+    count: 12,
+  },
 ];
 
 export const Categories: React.FC = () => {

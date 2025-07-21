@@ -23,7 +23,7 @@ export type FilterOptions = {
   occasions: string[];
   colors: string[];
   categories: string[];
-}
+};
 
 export type ProductFilters = {
   style?: string;
@@ -32,4 +32,4 @@ export type ProductFilters = {
   category?: string;
   priceRange?: [number, number];
   inStockOnly?: boolean;
-}
+};

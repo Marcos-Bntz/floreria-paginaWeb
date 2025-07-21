@@ -1,7 +1,7 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Leaf } from 'lucide-react';
-import { Button } from '../ui/Button';
+import React from "react";
+import { Link } from "react-router-dom";
+import { Leaf } from "lucide-react";
+import { Button } from "../ui/Button";
 
 export const CTA: React.FC = () => {
   return (
@@ -36,17 +36,18 @@ export const CTA: React.FC = () => {
 
               {/* Description */}
               <p className="text-text-secondary text-lg leading-relaxed">
-                Somos una pequeña boutique botánica familiar ubicada en San Francisco, CA. 
-                Ayudamos a las personas a difundir el amor a través de nuestros arreglos florales 
-                artesanales, plantas y regalos curados.
+                Somos una pequeña boutique botánica familiar ubicada en San
+                Francisco, CA. Ayudamos a las personas a difundir el amor a
+                través de nuestros arreglos florales artesanales, plantas y
+                regalos curados.
               </p>
 
               {/* CTA Button */}
               <div className="pt-4">
                 <Link to="/nosotros">
-                  <Button 
-                    variant="outline" 
-                    size="lg" 
+                  <Button
+                    variant="outline"
+                    size="lg"
                     className="border-2 border-dark text-dark hover:bg-dark hover:text-white transition-all duration-300"
                   >
                     SABER MÁS

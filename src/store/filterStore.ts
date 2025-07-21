@@ -1,10 +1,13 @@
-import { create } from 'zustand';
-import { ProductFilters } from '../types';
+import { create } from "zustand";
+import { ProductFilters } from "../types";
 
 interface FilterState {
   filters: ProductFilters;
   searchQuery: string;
-  setFilter: (key: keyof ProductFilters, value: string | [number, number] | boolean | undefined) => void;
+  setFilter: (
+    key: keyof ProductFilters,
+    value: string | [number, number] | boolean | undefined,
+  ) => void;
   setSearchQuery: (query: string) => void;
   clearFilters: () => void;
 }
@@ -16,23 +19,23 @@ export const useFilterStore = create<FilterState>((set) => ({
     color: undefined,
     category: undefined,
     priceRange: undefined,
-    inStockOnly: false
+    inStockOnly: false,
   },
-  searchQuery: '',
-  
+  searchQuery: "",
+
   setFilter: (key, value) => {
     set((state) => ({
       filters: {
         ...state.filters,
-        [key]: value
-      }
+        [key]: value,
+      },
     }));
   },
-  
+
   setSearchQuery: (query) => {
     set({ searchQuery: query });
   },
-  
+
   clearFilters: () => {
     set({
       filters: {
@@ -41,9 +44,9 @@ export const useFilterStore = create<FilterState>((set) => ({
         color: undefined,
         category: undefined,
         priceRange: undefined,
-        inStockOnly: false
+        inStockOnly: false,
       },
-      searchQuery: ''
+      searchQuery: "",
     });
-  }
+  },
 }));

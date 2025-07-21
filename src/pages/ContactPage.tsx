@@ -1,54 +1,60 @@
-import React, { useState } from 'react';
-import { Layout } from '../components/layout/Layout';
-import { Button } from '../components/ui/Button';
-import { 
-  MapPin, 
-  Phone, 
-  Mail, 
-  Clock, 
-  Send, 
+import React, { useState } from "react";
+import { Layout } from "../components/layout/Layout";
+import { Button } from "../components/ui/Button";
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Clock,
+  Send,
   MessageCircle,
   CheckCircle,
-  AlertCircle
-} from 'lucide-react';
+  AlertCircle,
+} from "lucide-react";
 
 export const ContactPage: React.FC = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    subject: '',
-    message: ''
+    name: "",
+    email: "",
+    phone: "",
+    subject: "",
+    message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simular envío del formulario
     setTimeout(() => {
       setIsSubmitting(false);
-      setSubmitStatus('success');
+      setSubmitStatus("success");
       setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        subject: '',
-        message: ''
+        name: "",
+        email: "",
+        phone: "",
+        subject: "",
+        message: "",
       });
-      
+
       // Resetear el estado después de 3 segundos
-      setTimeout(() => setSubmitStatus('idle'), 3000);
+      setTimeout(() => setSubmitStatus("idle"), 3000);
     }, 2000);
   };
 
@@ -57,25 +63,25 @@ export const ContactPage: React.FC = () => {
       icon: MapPin,
       title: "Dirección",
       content: "123 Calle de las Flores\nSan Francisco, CA 94102",
-      link: "https://maps.google.com"
+      link: "https://maps.google.com",
     },
     {
       icon: Phone,
       title: "Teléfono",
       content: "+1 (555) 123-4567",
-      link: "tel:+15551234567"
+      link: "tel:+15551234567",
     },
     {
       icon: Mail,
       title: "Email",
       content: "hola@lotus.com",
-      link: "mailto:hola@lotus.com"
+      link: "mailto:hola@lotus.com",
     },
     {
       icon: Clock,
       title: "Horarios",
-      content: "Lunes - Sábado: 9:00 AM - 7:00 PM\nDomingo: 10:00 AM - 4:00 PM"
-    }
+      content: "Lunes - Sábado: 9:00 AM - 7:00 PM\nDomingo: 10:00 AM - 4:00 PM",
+    },
   ];
 
   return (
@@ -91,8 +97,8 @@ export const ContactPage: React.FC = () => {
               Contáctanos
             </h1>
             <p className="text-lg text-text-secondary leading-relaxed">
-              Estamos aquí para ayudarte a crear el arreglo floral perfecto. 
-              No dudes en contactarnos para cualquier consulta o pedido especial.
+              Estamos aquí para ayudarte a crear el arreglo floral perfecto. No
+              dudes en contactarnos para cualquier consulta o pedido especial.
             </p>
           </div>
         </div>
@@ -116,21 +122,29 @@ export const ContactPage: React.FC = () => {
                       </div>
                     </div>
                     <div className="flex-1">
-                      <h3 className="font-semibold text-text-primary mb-1">{info.title}</h3>
+                      <h3 className="font-semibold text-text-primary mb-1">
+                        {info.title}
+                      </h3>
                       {info.link ? (
-                        <a 
-                          href={info.link} 
+                        <a
+                          href={info.link}
                           className="text-text-secondary hover:text-primary transition-colors"
-                          target={info.link.startsWith('http') ? '_blank' : undefined}
-                          rel={info.link.startsWith('http') ? 'noopener noreferrer' : undefined}
+                          target={
+                            info.link.startsWith("http") ? "_blank" : undefined
+                          }
+                          rel={
+                            info.link.startsWith("http")
+                              ? "noopener noreferrer"
+                              : undefined
+                          }
                         >
-                          {info.content.split('\n').map((line, i) => (
+                          {info.content.split("\n").map((line, i) => (
                             <div key={i}>{line}</div>
                           ))}
                         </a>
                       ) : (
                         <div className="text-text-secondary">
-                          {info.content.split('\n').map((line, i) => (
+                          {info.content.split("\n").map((line, i) => (
                             <div key={i}>{line}</div>
                           ))}
                         </div>
@@ -149,7 +163,9 @@ export const ContactPage: React.FC = () => {
                   <div className="text-center text-text-secondary">
                     <MapPin className="w-12 h-12 mx-auto mb-2 text-primary" />
                     <p>Mapa interactivo</p>
-                    <p className="text-sm">123 Calle de las Flores, San Francisco</p>
+                    <p className="text-sm">
+                      123 Calle de las Flores, San Francisco
+                    </p>
                   </div>
                 </div>
               </div>
@@ -160,8 +176,8 @@ export const ContactPage: React.FC = () => {
               <h2 className="font-heading text-3xl md:text-4xl font-bold text-text-primary mb-8">
                 Envíanos un mensaje
               </h2>
-              
-              {submitStatus === 'success' && (
+
+              {submitStatus === "success" && (
                 <div className="mb-6 p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg">
                   <div className="flex items-center">
                     <CheckCircle className="w-5 h-5 text-green-500 mr-2" />
@@ -172,12 +188,13 @@ export const ContactPage: React.FC = () => {
                 </div>
               )}
 
-              {submitStatus === 'error' && (
+              {submitStatus === "error" && (
                 <div className="mb-6 p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
                   <div className="flex items-center">
                     <AlertCircle className="w-5 h-5 text-red-500 mr-2" />
                     <span className="text-red-700 dark:text-red-300">
-                      Hubo un error al enviar el mensaje. Por favor, intenta nuevamente.
+                      Hubo un error al enviar el mensaje. Por favor, intenta
+                      nuevamente.
                     </span>
                   </div>
                 </div>
@@ -186,7 +203,10 @@ export const ContactPage: React.FC = () => {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-text-primary mb-2">
+                    <label
+                      htmlFor="name"
+                      className="block text-sm font-medium text-text-primary mb-2"
+                    >
                       Nombre completo *
                     </label>
                     <input
@@ -200,9 +220,12 @@ export const ContactPage: React.FC = () => {
                       placeholder="Tu nombre completo"
                     />
                   </div>
-                  
+
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-text-primary mb-2">
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium text-text-primary mb-2"
+                    >
                       Email *
                     </label>
                     <input
@@ -220,7 +243,10 @@ export const ContactPage: React.FC = () => {
 
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-text-primary mb-2">
+                    <label
+                      htmlFor="phone"
+                      className="block text-sm font-medium text-text-primary mb-2"
+                    >
                       Teléfono
                     </label>
                     <input
@@ -233,9 +259,12 @@ export const ContactPage: React.FC = () => {
                       placeholder="+1 (555) 123-4567"
                     />
                   </div>
-                  
+
                   <div>
-                    <label htmlFor="subject" className="block text-sm font-medium text-text-primary mb-2">
+                    <label
+                      htmlFor="subject"
+                      className="block text-sm font-medium text-text-primary mb-2"
+                    >
                       Asunto *
                     </label>
                     <select
@@ -257,7 +286,10 @@ export const ContactPage: React.FC = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-text-primary mb-2">
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-medium text-text-primary mb-2"
+                  >
                     Mensaje *
                   </label>
                   <textarea
@@ -280,7 +312,7 @@ export const ContactPage: React.FC = () => {
                   className="w-full md:w-auto"
                   icon={isSubmitting ? undefined : <Send className="w-5 h-5" />}
                 >
-                  {isSubmitting ? 'Enviando...' : 'Enviar mensaje'}
+                  {isSubmitting ? "Enviando..." : "Enviar mensaje"}
                 </Button>
               </form>
             </div>
@@ -296,54 +328,59 @@ export const ContactPage: React.FC = () => {
               Preguntas Frecuentes
             </h2>
             <p className="text-text-secondary max-w-2xl mx-auto">
-              ¿Tienes alguna pregunta? Aquí encontrarás las respuestas más comunes.
+              ¿Tienes alguna pregunta? Aquí encontrarás las respuestas más
+              comunes.
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-bg-primary dark:bg-bg-secondary p-6 rounded-lg shadow-lg">
               <h3 className="font-heading text-xl font-semibold text-text-primary mb-3">
                 ¿Cuánto tiempo duran las flores?
               </h3>
               <p className="text-text-secondary">
-                Nuestras flores frescas duran entre 5-7 días con el cuidado adecuado. 
-                Incluimos instrucciones de cuidado con cada pedido.
+                Nuestras flores frescas duran entre 5-7 días con el cuidado
+                adecuado. Incluimos instrucciones de cuidado con cada pedido.
               </p>
             </div>
-            
+
             <div className="bg-bg-primary dark:bg-bg-secondary p-6 rounded-lg shadow-lg">
               <h3 className="font-heading text-xl font-semibold text-text-primary mb-3">
                 ¿Hacen entregas el mismo día?
               </h3>
               <p className="text-text-secondary">
-                Sí, ofrecemos entrega el mismo día para pedidos realizados antes de las 2:00 PM 
-                en el área de San Francisco.
+                Sí, ofrecemos entrega el mismo día para pedidos realizados antes
+                de las 2:00 PM en el área de San Francisco.
               </p>
             </div>
-            
+
             <div className="bg-bg-primary dark:bg-bg-secondary p-6 rounded-lg shadow-lg">
               <h3 className="font-heading text-xl font-semibold text-text-primary mb-3">
                 ¿Puedo personalizar mi arreglo?
               </h3>
               <p className="text-text-secondary">
-                ¡Absolutamente! Nos encanta crear arreglos personalizados. 
+                ¡Absolutamente! Nos encanta crear arreglos personalizados.
                 Contacta con nosotros para discutir tus ideas.
               </p>
             </div>
-            
+
             <div className="bg-bg-primary dark:bg-bg-secondary p-6 rounded-lg shadow-lg">
               <h3 className="font-heading text-xl font-semibold text-text-primary mb-3">
                 ¿Aceptan devoluciones?
               </h3>
               <p className="text-text-secondary">
-                Si no estás satisfecho con tu pedido, contáctanos dentro de las 24 horas 
-                y haremos lo posible por solucionarlo.
+                Si no estás satisfecho con tu pedido, contáctanos dentro de las
+                24 horas y haremos lo posible por solucionarlo.
               </p>
             </div>
           </div>
-          
+
           <div className="text-center mt-8">
-            <Button variant="outline" size="lg" className="border-primary text-primary hover:bg-primary hover:text-white">
+            <Button
+              variant="outline"
+              size="lg"
+              className="border-primary text-primary hover:bg-primary hover:text-white"
+            >
               Ver todas las preguntas
             </Button>
           </div>
@@ -351,4 +388,4 @@ export const ContactPage: React.FC = () => {
       </section>
     </Layout>
   );
-}; 
+};

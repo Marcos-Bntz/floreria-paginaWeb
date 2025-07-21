@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { ShoppingCart, Menu, X, Flower, Sun, Moon } from 'lucide-react';
-import { useCartStore } from '../../store/cartStore';
-import { useTheme } from '../../hooks/useTheme';
-import { cn } from '../../utils/cn';
+import React, { useState, useEffect } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { ShoppingCart, Menu, X, Flower, Sun, Moon } from "lucide-react";
+import { useCartStore } from "../../store/cartStore";
+import { useTheme } from "../../hooks/useTheme";
+import { cn } from "../../utils/cn";
 
 export const Header: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -11,9 +11,9 @@ export const Header: React.FC = () => {
   const navigate = useNavigate();
   const { items } = useCartStore();
   const { theme, toggleTheme } = useTheme();
-  
+
   const totalItems = items.reduce((acc, item) => acc + item.quantity, 0);
-  
+
   useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [location]);
@@ -23,40 +23,48 @@ export const Header: React.FC = () => {
     setIsMobileMenuOpen(false);
     navigate(path);
     // Hacer scroll al top instantáneamente sin animación
-    window.scrollTo({ top: 0, behavior: 'auto' });
+    window.scrollTo({ top: 0, behavior: "auto" });
   };
-  
+
   const menuItems = [
-    { label: 'Tienda', path: '/catalogo' },
-    { label: 'Nosotros', path: '/nosotros' },
-    { label: 'Contacto', path: '/contacto' },
-    { label: 'Preguntas', path: '/preguntas' }
+    { label: "Tienda", path: "/catalogo" },
+    { label: "Nosotros", path: "/nosotros" },
+    { label: "Contacto", path: "/contacto" },
+    { label: "Preguntas", path: "/preguntas" },
   ];
 
   return (
-    <header className={cn(
-      "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-      "bg-bg-primary/95 backdrop-blur-sm shadow-lg border-b border-bg-accent dark:border-bg-accent"
-    )}>
+    <header
+      className={cn(
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+        "bg-bg-primary/95 backdrop-blur-sm shadow-lg border-b border-bg-accent dark:border-bg-accent",
+      )}
+    >
       <div className="container-custom">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3 group">
             <div className="relative">
-              <Flower className={cn(
-                "w-8 h-8 transition-all duration-200 group-hover:scale-110",
-                "text-primary"
-              )} />
+              <Flower
+                className={cn(
+                  "w-8 h-8 transition-all duration-200 group-hover:scale-110",
+                  "text-primary",
+                )}
+              />
               <div className="absolute -top-1 -right-1 w-3 h-3 bg-primary rounded-full animate-pulse"></div>
             </div>
             <div>
-              <span className={cn(
-                "font-heading text-2xl font-bold transition-colors duration-200",
-                "text-text-primary"
-              )}>
+              <span
+                className={cn(
+                  "font-heading text-2xl font-bold transition-colors duration-200",
+                  "text-text-primary",
+                )}
+              >
                 Lotus
               </span>
-              <div className="text-xs text-text-secondary font-medium">Florería Profesional</div>
+              <div className="text-xs text-text-secondary font-medium">
+                Florería Profesional
+              </div>
             </div>
           </Link>
 
@@ -68,7 +76,7 @@ export const Header: React.FC = () => {
                 to={item.path}
                 className={cn(
                   "font-medium transition-all duration-200 hover:text-primary relative group",
-                  "text-text-primary"
+                  "text-text-primary",
                 )}
               >
                 {item.label}
@@ -96,11 +104,15 @@ export const Header: React.FC = () => {
               onClick={toggleTheme}
               className={cn(
                 "p-2 rounded-full transition-all duration-200 hover:bg-bg-accent dark:hover:bg-bg-secondary group",
-                "text-text-primary"
+                "text-text-primary",
               )}
-              aria-label={theme === 'light' ? 'Cambiar a modo oscuro' : 'Cambiar a modo claro'}
+              aria-label={
+                theme === "light"
+                  ? "Cambiar a modo oscuro"
+                  : "Cambiar a modo claro"
+              }
             >
-              {theme === 'light' ? (
+              {theme === "light" ? (
                 <Moon className="w-5 h-5 group-hover:scale-110 transition-transform" />
               ) : (
                 <Sun className="w-5 h-5 group-hover:scale-110 transition-transform" />
@@ -112,10 +124,14 @@ export const Header: React.FC = () => {
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className={cn(
                 "md:hidden p-2 transition-colors duration-200",
-                "text-text-primary"
+                "text-text-primary",
               )}
             >
-              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isMobileMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
             </button>
           </div>
         </div>

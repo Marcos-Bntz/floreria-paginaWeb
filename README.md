@@ -86,12 +86,15 @@ src/
 ## 🎨 Personalización
 
 ### Colores
+
 Los colores están definidos en `src/index.css`:
+
 - Primary: `#9ED5C5` (Verde suave)
 - Secondary: `#FEDEDE` (Rosa claro)
 - Accent: `#F8F0E5` (Beige)
 
 ### Fuentes
+
 - Heading: Playfair Display
 - Body: Poppins
 
