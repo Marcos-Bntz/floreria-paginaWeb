@@ -130,4 +130,4 @@ Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) par
 
 Para preguntas o soporte, contacta a [tu-email@ejemplo.com]
 
-# Deploy test: Solo workflow de GitHub Pages activo 🚀
+# Deploy test: Probando deploy tras cambio de permisos en Actions 🚀
