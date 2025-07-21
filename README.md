@@ -1,4 +1,4 @@
-# 🌸 Florelia - Ecommerce de Flores
+# 🌸 Lotus - Ecommerce de Flores
 
 Una aplicación web moderna para una floristería, construida con React, TypeScript, Vite y TailwindCSS.
 
@@ -130,4 +130,4 @@ Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) par
 
 Para preguntas o soporte, contacta a [tu-email@ejemplo.com]
 
-# Deploy test: Forzando workflow para crear rama gh-pages 🚀
+# Deploy test: Solo workflow de GitHub Pages activo 🚀
