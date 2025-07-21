@@ -10,7 +10,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist -b gh-pages -u \"github-actions[bot] <github-actions[bot]@users.noreply.github.com>\" --repo=https://${GH_TOKEN}@github.com/Marcos-Bntz/floreria-paginaWeb.git"
+    "deploy": "gh-pages -d dist -b gh-pages --repo=https://${GH_TOKEN}@github.com/Marcos-Bntz/floreria-paginaWeb.git"
   },
   "dependencies": {
     "clsx": "^2.1.0",
