@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { cn } from '../../utils/cn';
+import { ArrowRight, Leaf } from 'lucide-react';
 
 interface Category {
   id: string;
@@ -12,78 +12,95 @@ interface Category {
 
 const categories: Category[] = [
   {
-    id: 'ramos',
-    name: 'Ramos',
-    image: 'https://images.pexels.com/photos/2879824/pexels-photo-2879824.jpeg',
-    description: 'Ramos elegantes para toda ocasión',
+    id: 'flores',
+    name: 'Flores',
+    image: 'https://images.pexels.com/photos/2253870/pexels-photo-2253870.jpeg?auto=compress&cs=tinysrgb&w=800',
+    description: 'Hermosos ramos y arreglos',
     count: 24
   },
   {
-    id: 'arreglos',
-    name: 'Arreglos',
-    image: 'https://images.pexels.com/photos/6698378/pexels-photo-6698378.jpeg',
-    description: 'Composiciones florales únicas',
+    id: 'plantas',
+    name: 'Plantas & Árboles',
+    image: 'https://images.pexels.com/photos/6551854/pexels-photo-6551854.jpeg',
+    description: 'Plantas de interior y exterior',
     count: 18
   },
   {
-    id: 'plantas',
-    name: 'Plantas',
-    image: 'https://images.pexels.com/photos/776656/pexels-photo-776656.jpeg',
-    description: 'Plantas ornamentales y de interior',
-    count: 15
-  },
-  {
-    id: 'ocasiones',
-    name: 'Ocasiones especiales',
-    image: 'https://images.pexels.com/photos/931154/pexels-photo-931154.jpeg',
-    description: 'Arreglos para bodas y eventos',
-    count: 22
+    id: 'regalos',
+    name: 'Regalos',
+    image: 'https://images.pexels.com/photos/5745371/pexels-photo-5745371.jpeg',
+    description: 'Colecciones de regalos curados',
+    count: 12
   }
 ];
 
 export const Categories: React.FC = () => {
   return (
-    <section className="py-16 bg-accent">
-      <div className="container-custom">
-        <div className="text-center mb-12">
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-gray-800 mb-3">
-            Explora nuestras categorías
-          </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Descubre nuestra amplia variedad de opciones para cada ocasión y espacio
-          </p>
+    <section className="relative py-20">
+      {/* Background Split */}
+      <div className="absolute inset-0">
+        <div className="h-full grid grid-cols-1 lg:grid-cols-2">
+          <div className="bg-secondary"></div>
+          <div className="bg-accent"></div>
         </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      </div>
+
+      <div className="container-custom relative z-10">
+        {/* Section Header */}
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center justify-center w-12 h-12 bg-white rounded-full mb-6">
+            <Leaf className="w-6 h-6 text-primary" />
+          </div>
+          <h2 className="font-heading text-4xl md:text-5xl font-bold text-text-primary mb-4">
+            NUESTROS PRODUCTOS
+          </h2>
+        </div>
+
+        {/* Categories Grid */}
+        <div className="grid md:grid-cols-3 gap-8">
           {categories.map((category) => (
-            <Link 
+            <Link
               key={category.id}
               to={`/catalogo?categoria=${category.id}`}
-              className="group block"
+              className="group"
             >
-              <div className="relative overflow-hidden rounded-lg aspect-square">
-                <img 
-                  src={category.image} 
-                  alt={category.name}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className={cn(
-                  "absolute inset-0 bg-gradient-to-t from-black/70 to-transparent",
-                  "flex flex-col justify-end p-6 text-white"
-                )}>
-                  <h3 className="font-heading text-xl font-semibold mb-1 group-hover:text-primary transition-colors">
-                    {category.name}
-                  </h3>
-                  <p className="text-sm opacity-90 mb-2">
-                    {category.description}
+              <div className="category-card bg-bg-primary dark:bg-bg-secondary rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
+                {/* Image */}
+                <div className="relative h-64 overflow-hidden">
+                  <img
+                    src={category.image}
+                    alt={category.name}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  {/* Overlay */}
+                  <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors duration-300"></div>
+                </div>
+
+                {/* Content */}
+                <div className="p-6">
+                  <div className="flex items-center justify-between">
+                    <h3 className="font-heading text-xl font-semibold text-text-primary group-hover:text-primary transition-colors duration-200">
+                      {category.name}
+                    </h3>
+                    <ArrowRight className="w-5 h-5 text-primary group-hover:translate-x-1 transition-transform duration-200" />
+                  </div>
+                  <p className="text-text-secondary mt-2 text-sm">
+                    {category.count} productos disponibles
                   </p>
-                  <span className="text-xs font-medium">
-                    {category.count} productos
-                  </span>
                 </div>
               </div>
             </Link>
           ))}
+        </div>
+
+        {/* View All Button */}
+        <div className="text-center mt-12">
+          <Link to="/catalogo">
+            <button className="inline-flex items-center space-x-2 bg-dark text-white px-8 py-4 rounded-lg hover:bg-primary transition-colors duration-200 font-medium">
+              <span>Ver Todos los Productos</span>
+              <ArrowRight className="w-5 h-5" />
+            </button>
+          </Link>
         </div>
       </div>
     </section>

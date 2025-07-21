@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { 
   Heart, 
   Share2, 
@@ -8,7 +8,8 @@ import {
   ChevronRight, 
   Minus, 
   Plus, 
-  Check 
+  Check,
+  CreditCard
 } from 'lucide-react';
 import { Layout } from '../components/layout/Layout';
 import { Button } from '../components/ui/Button';
@@ -21,6 +22,7 @@ export const ProductDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const [quantity, setQuantity] = useState(1);
   const { addItem } = useCartStore();
+  const navigate = useNavigate();
   
   // Buscar el producto por ID
   const product = products.find(p => p.id === id);
@@ -53,6 +55,14 @@ export const ProductDetailPage: React.FC = () => {
   
   const handleAddToCart = () => {
     addItem(product, quantity);
+  };
+
+  const handleBuyNow = () => {
+    navigate('/checkout', { 
+      state: { 
+        directPurchase: { product, quantity } 
+      } 
+    });
   };
   
   const handleQuantityChange = (value: number) => {
@@ -89,18 +99,18 @@ export const ProductDetailPage: React.FC = () => {
           <div>
             <div className="mb-6">
               <div className="flex items-center justify-between mb-2">
-                <div className="uppercase text-sm font-medium text-gray-500 tracking-wider">
+                <div className="uppercase text-sm font-medium text-text-secondary tracking-wider">
                   {product.category}
                 </div>
                 <div className="flex space-x-2">
                   <button 
-                    className="p-2 text-gray-400 hover:text-primary rounded-full hover:bg-gray-100 transition-colors"
+                    className="p-2 text-text-secondary hover:text-primary rounded-full hover:bg-accent dark:hover:bg-accent/20 transition-colors"
                     aria-label="Agregar a favoritos"
                   >
                     <Heart size={20} />
                   </button>
                   <button 
-                    className="p-2 text-gray-400 hover:text-primary rounded-full hover:bg-gray-100 transition-colors"
+                    className="p-2 text-text-secondary hover:text-primary rounded-full hover:bg-accent dark:hover:bg-accent/20 transition-colors"
                     aria-label="Compartir"
                   >
                     <Share2 size={20} />
@@ -108,12 +118,12 @@ export const ProductDetailPage: React.FC = () => {
                 </div>
               </div>
               
-              <h1 className="font-heading text-3xl font-bold text-gray-800 mb-2">
+              <h1 className="font-heading text-3xl font-bold text-text-primary mb-2">
                 {product.name}
               </h1>
               
               <div className="flex items-center gap-3 mb-4">
-                <span className="font-heading text-2xl font-semibold text-gray-800">
+                <span className="font-heading text-2xl font-semibold text-text-primary">
                   ${product.price.toLocaleString('es-MX')}
                 </span>
                 
@@ -126,26 +136,26 @@ export const ProductDetailPage: React.FC = () => {
                 </div>
               </div>
               
-              <p className="text-gray-600 mb-6">
+              <p className="text-text-secondary mb-6">
                 {product.description}
               </p>
               
               {/* Etiquetas */}
               <div className="flex flex-wrap gap-2 mb-6">
                 {product.style && (
-                  <div className="bg-accent px-3 py-1 rounded-full text-sm text-gray-700">
+                  <div className="bg-accent dark:bg-accent/20 px-3 py-1 rounded-full text-sm text-text-primary">
                     Estilo: <span className="font-medium capitalize">{product.style}</span>
                   </div>
                 )}
                 
                 {product.occasion && (
-                  <div className="bg-accent px-3 py-1 rounded-full text-sm text-gray-700">
+                  <div className="bg-accent dark:bg-accent/20 px-3 py-1 rounded-full text-sm text-text-primary">
                     Ocasión: <span className="font-medium capitalize">{product.occasion}</span>
                   </div>
                 )}
                 
                 {product.colors.map(color => (
-                  <div key={color} className="bg-accent px-3 py-1 rounded-full text-sm text-gray-700 flex items-center">
+                  <div key={color} className="bg-accent dark:bg-accent/20 px-3 py-1 rounded-full text-sm text-text-primary flex items-center">
                     <div 
                       className="w-3 h-3 rounded-full mr-1"
                       style={{ backgroundColor: getColorHex(color) }}
@@ -157,14 +167,14 @@ export const ProductDetailPage: React.FC = () => {
               
               {/* Cantidad */}
               <div className="mb-6">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-text-primary mb-2">
                   Cantidad
                 </label>
                 <div className="flex items-center">
                   <button 
                     onClick={() => handleQuantityChange(quantity - 1)}
                     disabled={quantity <= 1}
-                    className="p-2 border border-gray-300 rounded-l-md text-gray-500 hover:bg-gray-100 disabled:opacity-50"
+                    className="p-2 border border-gray-300 dark:border-gray-600 rounded-l-md text-text-secondary hover:bg-accent dark:hover:bg-accent/20 disabled:opacity-50"
                   >
                     <Minus size={16} />
                   </button>
@@ -174,12 +184,12 @@ export const ProductDetailPage: React.FC = () => {
                     onChange={(e) => handleQuantityChange(parseInt(e.target.value))}
                     min="1"
                     max={product.stockQuantity}
-                    className="w-16 text-center border-y border-gray-300 py-2 focus:outline-none focus:ring-0 focus:border-gray-300"
+                    className="w-16 text-center border-y border-gray-300 dark:border-gray-600 py-2 focus:outline-none focus:ring-0 focus:border-gray-300 dark:focus:border-gray-600 bg-bg-primary text-text-primary"
                   />
                   <button 
                     onClick={() => handleQuantityChange(quantity + 1)}
                     disabled={quantity >= product.stockQuantity}
-                    className="p-2 border border-gray-300 rounded-r-md text-gray-500 hover:bg-gray-100 disabled:opacity-50"
+                    className="p-2 border border-gray-300 dark:border-gray-600 rounded-r-md text-text-secondary hover:bg-accent dark:hover:bg-accent/20 disabled:opacity-50"
                   >
                     <Plus size={16} />
                   </button>
@@ -199,16 +209,16 @@ export const ProductDetailPage: React.FC = () => {
                   Agregar al carrito
                 </Button>
                 
-                <Link to="/checkout" className="flex-1">
-                  <Button 
-                    variant="outline" 
-                    size="lg" 
-                    className="w-full"
-                    disabled={!product.inStock}
-                  >
-                    Comprar ahora
-                  </Button>
-                </Link>
+                <Button 
+                  variant="outline" 
+                  size="lg" 
+                  className="flex-1"
+                  icon={<CreditCard size={18} />}
+                  disabled={!product.inStock}
+                  onClick={handleBuyNow}
+                >
+                  Comprar ahora
+                </Button>
               </div>
               
               {/* Información de envío */}

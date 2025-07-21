@@ -7,7 +7,6 @@ import { ProductFilters } from '../components/product/ProductFilters';
 import { Button } from '../components/ui/Button';
 import { products, filterOptions } from '../data/products';
 import { useFilterStore } from '../store/filterStore';
-import { cn } from '../utils/cn';
 
 export const CatalogPage: React.FC = () => {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
@@ -41,12 +40,12 @@ export const CatalogPage: React.FC = () => {
   
   return (
     <Layout>
-      <div className="container-custom py-8">
+      <div className="container-custom py-8 pt-32 md:pt-40 lg:pt-44">
         <div className="mb-8">
-          <h1 className="font-heading text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+          <h1 className="font-heading text-3xl md:text-4xl font-bold text-text-primary mb-4">
             Catálogo de productos
           </h1>
-          <p className="text-gray-600 max-w-3xl">
+          <p className="text-text-secondary max-w-3xl">
             Explora nuestra colección de arreglos florales, ramos, plantas y más. Usa los filtros 
             para encontrar el producto perfecto para tu ocasión especial.
           </p>
@@ -60,7 +59,7 @@ export const CatalogPage: React.FC = () => {
               placeholder="Buscar productos..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full py-2 pl-10 pr-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50"
+              className="w-full py-2 pl-10 pr-4 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50 bg-bg-primary text-text-primary"
             />
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
             {searchQuery && (
@@ -96,9 +95,9 @@ export const CatalogPage: React.FC = () => {
           <div className="flex-1">
             {/* Filtros activos */}
             {Object.values(filters).some(value => value !== undefined && value !== false) && (
-              <div className="mb-6 p-4 bg-accent rounded-lg">
+              <div className="mb-6 p-4 bg-bg-accent dark:bg-bg-secondary rounded-lg">
                 <div className="flex items-center justify-between mb-2">
-                  <h3 className="font-medium text-gray-800">Filtros activos</h3>
+                  <h3 className="font-medium text-text-primary">Filtros activos</h3>
                   <button
                     onClick={() => useFilterStore.getState().clearFilters()}
                     className="text-sm text-primary hover:underline"
@@ -159,7 +158,7 @@ export const CatalogPage: React.FC = () => {
         {/* Modal de filtros (mobile) */}
         {isFilterOpen && (
           <div className="fixed inset-0 z-50 bg-black bg-opacity-50 lg:hidden">
-            <div className="absolute inset-y-0 right-0 w-full max-w-md bg-white shadow-xl transition-transform animate-fade-in overflow-auto">
+            <div className="absolute inset-y-0 right-0 w-full max-w-md bg-bg-primary dark:bg-bg-secondary shadow-xl transition-transform animate-fade-in overflow-auto">
               <div className="p-1">
                 <ProductFilters 
                   filterOptions={filterOptions} 
@@ -182,8 +181,8 @@ interface FilterTagProps {
 
 const FilterTag: React.FC<FilterTagProps> = ({ label, onRemove }) => {
   return (
-    <div className="inline-flex items-center bg-white rounded-full px-3 py-1 text-sm border border-gray-200">
-      <span className="capitalize">{label}</span>
+    <div className="inline-flex items-center bg-bg-primary dark:bg-bg-secondary rounded-full px-3 py-1 text-sm border border-gray-200 dark:border-gray-700">
+      <span className="capitalize text-text-primary">{label}</span>
       <button 
         onClick={onRemove}
         className="ml-2 text-gray-400 hover:text-gray-600"

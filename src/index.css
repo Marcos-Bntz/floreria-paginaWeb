@@ -4,12 +4,47 @@
 
 @layer base {
   :root {
-    --color-primary: 158 213 197; /* #9ED5C5 */
-    --color-secondary: 254 222 222; /* #FEDEDE */
-    --color-accent: 248 240 229; /* #F8F0E5 */
+    --color-primary: 34 197 94; /* #22C55E - Verde oscuro */
+    --color-secondary: 134 239 172; /* #86EFAC - Verde claro */
+    --color-accent: 254 242 242; /* #FEF2F2 - Rosa pálido (primer color de la paleta) */
+    --color-dark: 20 83 45; /* #14532D - Verde muy oscuro */
+    --color-light: 240 253 244; /* #F0FDF4 - Verde muy claro */
     --color-success: 132 204 22; /* #84CC16 */
     --color-warning: 250 204 21; /* #FACC15 */
     --color-error: 239 68 68; /* #EF4444 */
+    
+    /* Nueva paleta de colores para modo claro */
+    --color-text-primary: 55 65 81; /* #374151 - Gris oscuro (quinto color adaptado) */
+    --color-text-secondary: 156 163 175; /* #9CA3AF - Gris medio */
+    --color-text-inverse: 255 255 255; /* #FFFFFF */
+    
+    /* Fondos usando la nueva paleta */
+    --color-bg-primary: 255 251 254; /* #FFFBFE - Rosa muy claro (primer color) */
+    --color-bg-secondary: 250 247 245; /* #FAF7F5 - Beige claro (segundo color) */
+    --color-bg-accent: 243 244 246; /* #F3F4F6 - Gris claro (tercer color) */
+    --color-bg-accent-alt: 134 142 150; /* #868E96 - Verde sage (cuarto color) */
+  }
+
+  .dark {
+    --color-primary: 34 197 94; /* #22C55E - Verde oscuro */
+    --color-secondary: 134 239 172; /* #86EFAC - Verde claro */
+    --color-accent: 30 41 59; /* #1E293B - Azul oscuro */
+    --color-dark: 15 23 42; /* #0F172A - Azul muy oscuro */
+    --color-light: 51 65 85; /* #334155 - Azul gris */
+    --color-success: 132 204 22; /* #84CC16 */
+    --color-warning: 250 204 21; /* #FACC15 */
+    --color-error: 239 68 68; /* #EF4444 */
+    
+    /* Nueva paleta de verdes para modo oscuro */
+    --color-text-primary: 240 253 244; /* #F0FDF4 - Verde muy claro para texto */
+    --color-text-secondary: 187 247 208; /* #BBF7D0 - Verde claro para texto secundario */
+    --color-text-inverse: 15 23 42; /* #0F172A - Azul muy oscuro */
+    
+    /* Fondos usando la paleta de verdes */
+    --color-bg-primary: 15 23 42; /* #0F172A - Verde muy oscuro (tercer color) */
+    --color-bg-secondary: 20 83 45; /* #14532D - Verde oscuro (segundo color) */
+    --color-bg-accent: 34 197 94; /* #22C55E - Verde medio (primer color) */
+    --color-bg-accent-alt: 15 23 42; /* #0F172A - Verde muy oscuro para acentos */
   }
 
   html {
@@ -17,7 +52,7 @@
   }
   
   body {
-    @apply font-body text-gray-800 bg-white;
+    @apply font-body bg-bg-primary text-text-primary transition-colors duration-200;
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -25,7 +60,7 @@
   }
   
   h1 {
-    @apply text-4xl md:text-5xl;
+    @apply text-4xl md:text-5xl lg:text-6xl;
   }
   
   h2 {
@@ -41,7 +76,7 @@
   }
 
   input, select, textarea {
-    @apply rounded-md border-gray-300 focus:border-primary focus:ring focus:ring-primary focus:ring-opacity-50;
+    @apply rounded-md border-gray-300 dark:border-gray-600 focus:border-primary focus:ring focus:ring-primary focus:ring-opacity-50 bg-bg-primary text-text-primary;
   }
   
   button {
@@ -51,7 +86,7 @@
 
 @layer components {
   .btn {
-    @apply px-4 py-2 rounded-md font-medium transition-all duration-200;
+    @apply px-6 py-3 rounded-md font-medium transition-all duration-200;
   }
   
   .btn-primary {
@@ -59,11 +94,11 @@
   }
   
   .btn-secondary {
-    @apply bg-secondary text-gray-700 hover:bg-secondary/90 focus:ring-2 focus:ring-secondary/50;
+    @apply bg-secondary text-text-primary hover:bg-secondary/90 focus:ring-2 focus:ring-secondary/50;
   }
   
   .btn-outline {
-    @apply border border-primary text-primary hover:bg-primary/10 focus:ring-2 focus:ring-primary/50;
+    @apply border-2 border-current hover:bg-current hover:text-text-inverse focus:ring-2 focus:ring-current/50;
   }
   
   .container-custom {
@@ -71,10 +106,26 @@
   }
 
   .product-card {
-    @apply bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg;
+    @apply bg-bg-primary dark:bg-bg-secondary rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg;
   }
 
   .product-card-img {
     @apply w-full h-64 object-cover transition-transform duration-300 hover:scale-105;
+  }
+
+  .hero-section {
+    @apply relative min-h-screen flex items-center;
+  }
+
+  .category-card {
+    @apply relative overflow-hidden rounded-lg transition-all duration-300 hover:scale-105 bg-bg-primary dark:bg-bg-secondary;
+  }
+
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .dark .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   }
 }

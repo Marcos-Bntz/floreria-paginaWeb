@@ -51,10 +51,10 @@ export const CartPage: React.FC = () => {
   
   return (
     <Layout>
-      <div className="container-custom py-8">
+      <div className="container-custom py-16 pt-32 md:pt-40 lg:pt-44">
         <div className="mb-8">
-          <h1 className="font-heading text-3xl font-bold text-gray-800 mb-2">
-            Carrito de compras
+          <h1 className="font-heading text-3xl md:text-4xl font-bold text-text-primary mb-4">
+            Carrito de Compras
           </h1>
           <div className="flex items-center text-sm text-gray-500">
             <Link to="/" className="hover:text-primary">Inicio</Link>
